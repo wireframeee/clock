@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>clock</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+        body {
+            text-align: center;
+            font-family: 'Staatliches', sans-serif;
+            font-weight: 300;
+            font-size: 2.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f6f6f6;
+            height: 50vh;
+        }
+
+        #clock {
+            box-shadow: rgba(114, 46, 240, 0.4) 5px 5px, rgba(46, 69, 240, 0.3) 10px 10px;
+            width: 70vh;
+            height: 30vh;
+        }
+        
+
+    </style>
+</head>
+
+<body>
+
+    <div id="clock">
+        <h1 id="time"></h1>
+    </div>
+
+    <script>
+        function clock() {
+            let today = new Date()
+            let hours = today.getHours();
+            let minutes = today.getMinutes();
+            let seconds = today.getSeconds();
+
+            let hour = hours < 10 ? "0" + hours : hours;
+            let minute = minutes < 10 ? "0" + minutes : minutes;
+            let second = seconds < 10 ? "0" + seconds : seconds;
+
+            let hourTime = hour > 12 ? hour - 12 : hour;
+
+            let ampm = hour < 12 ? "AM" : "PM";
+
+            let time = hourTime + ":" + minute + ":" + second + " " + ampm;
+
+            document.getElementById("time").innerText = time;
+            setTimeout(clock, 1000);
+        };
+        clock();
+    </script>
+
+</body>
+
+</html>
